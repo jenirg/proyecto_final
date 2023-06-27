@@ -1,0 +1,41 @@
+version: "3.3"
+
+services:
+  ################################################################
+  #                 DATABASES CONFIGURATION                      #
+  ################################################################
+  
+  ################################################################
+  #                 DATABASE FOR HEAT CONFIGURATION              #
+  ################################################################
+  heatdb:
+    container_name: heatdb
+    hostname: heatdb
+    build: database/.
+    volumes:
+      - ./database/db_heat:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: hola1234
+      MYSQL_DATABASE: heats
+    expose:
+      - 3306
+    ports:
+      - 3306:3306
+
+  
+  ################################################################
+  #                 DATABASE FOR HEAT CONFIGURATION              #
+  ################################################################
+  diseasesdb:
+    container_name: diseasesdb
+    hostname: diseasesdb
+    build: database/.
+    volumes:
+      - ./database/db_diseases:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: hola1234
+      MYSQL_DATABASE: diseases
+    expose:
+      - 3307
+    ports:
+      - 3307:3306
